@@ -18,7 +18,8 @@ Until that gets merged, the easiest is to install
 TotallyInformation's version.
 
 To bring this project to life, install vue-cli (e.g. `apt install vue-cli`
-on Ubuntu) and install all the dependencies of this repo locally.
+on Ubuntu or see https://cli.vuejs.org/guide/installation.html) and install
+all the dependencies of this repo locally:
 ```
 npm install
 ```

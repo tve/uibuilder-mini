@@ -1,28 +1,14 @@
-Test dashboard using Vuetify
-============================
+Mini-demo using Node-Red with Vuetify
+=====================================
 
-This is a Node-Red test dashboard using uibuilder, Vue.js, and Vuetify.
-The dashboard uses a simple tabbed interface and shows a small number of
-tabs with test components that display data coming from node-red.
-A sample flow is provided that populates the dashboard with test data.
+This is a mini Node-Red demo using uibuilder, Vue.js, and Vuetify.
+The demo shows a light switch. The light switch can be toggled in the
+web browser as well as using two inject nodes in node-red. In all cases
+the changes trigger messages in node-red that can output some control
+requests to actually turn the light on/off, and the web UI always shows
+the current state.
 
-This project uses vue-cli to build the UI. This has the benefit of
-providing all the amenities of modern javascript coding, including
-automatic hot-reload when a source file is changed.
-
-The way it works in development mode is that you run vue-cli-service
-on your dev machine (e.g. laptop) which serves-up the UI components
-from this source tree. The browser connects to the node-red server only
-to receive (and send) event streams.
-
-For production mode, vue-cli-service is run to produce a dist package
-that can be dropped onto any static web server, including node-red's
-static file-serving directory. Note that this project does not use
-the file serving capabilities of the uibuilder nodes at all.
-
-Start the flow and navigate to http://localhost:1880/d-test
-
-## Project setup
+## Quick start
 
 The node-red installation need to include uibuilder, however, it needs a
 small patch to support CORS which is described in
@@ -37,28 +23,17 @@ on Ubuntu) and install all the dependencies of this repo locally.
 npm install
 ```
 
-### Compiles and hot-reloads for development
-Edit `.env.development` to reflect where you point your browser to get the
-UI and where the UI needs to connect to get to node-red. Then start the dev
-server for the UI:
-```
-npm run serve
-```
-or
-```
-vue-cli-service serve
-```
+Now there are two hostnames to possibly configure. In the end there will be three pieces:
+- your web browser running on your laptop/desktop
+- the vue-cli development server that serves up the UI files
+- the node-red server that runs the flow.js and to which uibuilder connects
 
-### Compiles and minifies for production
-Edit `.env.production` to reflect your node-red environment.
-```
-npm run build
-```
+Edit `.env.development` and set `DEV_SERVER` to the hostname of the machine that
+will run vue-cli, i.e. where you installed this repo, most likely your laptop,
+thus `http://localhost:8080.` Then set `VUE_APP_NR_SERVER` to the hostname:port of the
+machine that runs node-red, most likely also your laptop thus `http://localhost:1880`
 
-### Lints and fixes files
-```
-npm run lint
-```
+Open your node-red admin UI and import `flow.js` and start the flow.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Finally, start the dev server using `npm run serve` or `vue-cli-service serve`
+and point your web browser at the `DEV_SERVER` url.

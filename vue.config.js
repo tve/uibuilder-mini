@@ -16,7 +16,7 @@ module.exports = {
   chainWebpack: config => {
     config.plugin('html').tap(args => {
       args[0].title = process.env.NODE_ENV == 'production' ?
-          'Dash' : 'Test Dash'  // htmlWebpackPlugin.options.title
+          'Mini Dash' : 'Test Mini Dash'  // htmlWebpackPlugin.options.title
       return args
       })
   },
